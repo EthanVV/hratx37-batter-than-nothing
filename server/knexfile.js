@@ -4,7 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgresql://postgres@localhost/ugh'
+    connection: 'postgresql://postgres@localhost/donutsdb'
   }
 
 };
