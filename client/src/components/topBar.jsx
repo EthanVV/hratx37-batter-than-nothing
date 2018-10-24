@@ -7,26 +7,45 @@ const wrapper = {
   gridGap: '10px',
   backgroundColor: 'lightgrey'
 }
-const home = {
-  
+const title= {
+  fontSize: '250%',
+  fontWeigth: 'bold',
+  paddingLeft: '10px',
+  gridColumn: '1 / 5'
+}
+const navWrapper = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  gridGap: '5px',
+  gridColumn: '8/11'
+}
+const nav = {
+  backgroundColor: 'grey',
+  textAlign: 'center'
 }
 
 
-const TopBar = (props) => (
-  <div className='wrapper' style={wrapper}>
-    <span>Donut Shop</span>
-    <span>Home</span>
-    <span>Dounuts</span>
-    <span>Customize</span>
-    <span>Cart</span>
+class TopBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-  {/* <nav className='TopBarNav'>
-    <a className='TopBarHome' onClick={() => props.onClick('home')}>Home</a>
-    <a className='TopBarDonuts' onClick={() => props.onClick('donuts')}>Donuts</a>
-    <a className='TopBarCustomize' onClick={() => props.onClick('customize')}>Customize</a>
-    <a className='TopBarCart' onClick={() => props.onClick('cart')}>Cart</a>
-  </nav> */}
-  </div>
-);
+    }
+  }
+
+  render() {
+    return (
+    <div style={wrapper}>
+      <div style={title}>The Donut Shop!</div>
+      <div style={navWrapper}>
+        <div style={nav} onClick={()=>this.props.handleRoute('home')}><p>Home</p></div>
+        <div style={nav} onClick={()=>this.props.handleRoute('donuts')}><p>Donuts</p></div>
+        <div style={nav} onClick={()=>this.props.handleRoute('customize')}><p>Customize</p></div>
+        <div style={nav} onClick={()=>this.props.handleRoute('cart')}><p>Cart</p></div>
+      </div>
+    </div>
+    );
+  }
+}
 
 export default TopBar;

@@ -58,7 +58,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <TopBar onClick={this.handleRoute.bind(this)}/>
+        <TopBar handleRoute={this.handleRoute.bind(this)}/>
         <div>
           {this.state.page}
         </div>
