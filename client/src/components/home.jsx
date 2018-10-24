@@ -18,14 +18,14 @@ const leftItem = {
   textAlign: 'center',
   backgroundColor: 'lightpink',
   gridColumn: '2',
-  gridRow: '4/6'
+  gridRow: '4/5'
 }
 
 const rightItem = {
   textAlign: 'center',
   backgroundColor: 'lightblue',
   gridColumn: '4',
-  gridRow: '4/6'
+  gridRow: '4/5'
 }
 const getStarted = {
   backgroundColor: 'grey',
