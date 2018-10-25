@@ -1,6 +1,6 @@
 import React from 'react';
 import ToppingSelectForm from './toppingSelectForm.jsx';
-
+import NewToppingForm from './newToppingForm.jsx';
 const title = {
   fontWeight: 'bold'
 }
@@ -44,6 +44,7 @@ class DonutCustomizer extends React.Component {
           <ToppingSelectForm />
           <input type='submit' value="Create Donut!"/>
         </div>
+        <NewToppingForm />
       </div>
     )
   }
