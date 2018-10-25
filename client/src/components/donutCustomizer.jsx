@@ -1,4 +1,5 @@
 import React from 'react';
+import ToppingSelectForm from './toppingSelectForm.jsx';
 
 const title = {
   fontWeight: 'bold'
@@ -11,7 +12,10 @@ const textEntry = {
 class DonutCustomizer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      donutBases: ['base1', 'base2', 'base3'],
+      donutTypes: ['type1', 'type2', 'type3']
+    };
   }
 
   render() {
@@ -19,10 +23,25 @@ class DonutCustomizer extends React.Component {
       <div>
         <p style={title}>Create a custom donut</p>
         <div>
-          <div style={textEntry}>Donute Name<input type="text" name="DonutName"/></div>
-          <div style={textEntry}>Donut Description<input type="text" name="DonutDescription"/></div>
-          <div style={textEntry}>Donute Base<input type="text" name="DonutBase"/></div>
-          <div style={textEntry}>Donut Type<input type="text" name="DonutType"/></div>
+          <div style={textEntry}>
+            Donute Name<input type="text" name="DonutName"/>
+          </div>
+          <div style={textEntry}>
+            Donut Description<input type="text" name="DonutDescription"/>
+          </div>
+          <div>
+            Donut Base
+            <select>
+              {this.state.donutBases.map(base => <option value={base}>{base}</option>)}
+            </select>
+          </div>
+          <div>
+            Donut Type
+            <select>
+              {this.state.donutTypes.map(type => <option value={type}>{type}</option>)}
+            </select>
+          </div>
+          <ToppingSelectForm />
         </div>
       </div>
     )
