@@ -45,11 +45,13 @@ const Home = (props) => {
     <div classname='wrapper' style={wrapper}>
       <div style={bannerImage}></div> 
       <div style={leftItem}>
-        <a href="https://via.placeholder.com/350x150"><img src="https://via.placeholder.com/350x150"/></a>
+        <a href="https://via.placeholder.com/350x150?text=Customize+Image"><img src="https://via.placeholder.com/350x150?text=Customize+Image"/></a>
+        <p>Customize</p>
         <button style={getStarted} type="button">Get Started</button>
       </div>
       <div style={rightItem}>
-        <a href="https://via.placeholder.com/350x150"><img src="https://via.placeholder.com/350x150"/></a>
+        <a href="https://via.placeholder.com/350x150?text=Customize+Image"><img src="https://via.placeholder.com/350x150?text=Order+Image"/></a>
+        <p>Order</p>
         <button style={getStarted} type="button">Get Started</button>
       </div>
     </div>

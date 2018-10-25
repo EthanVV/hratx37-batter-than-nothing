@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import TopBar from './topBar.jsx';
 import Donuts from './donuts.jsx';
 import Home from './home.jsx';
-import TopBar from './topBar.jsx';
+import Customize from './customize.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -41,10 +42,11 @@ class App extends React.Component {
     // this.state.routes[clickedRoute] = true;
     switch (clickedRoute) {
       case 'donuts':
+        console.log('donutsRoute reached');
         this.setState({ page: <Donuts donuts={this.state.donuts} /> })
         break;
       case 'customize':
-        this.setState({ page: 'customize component goes here' })
+        this.setState({ page: <Customize /> })
         break;
       case 'cart':
         this.setState({ page: 'cart component goes here' })

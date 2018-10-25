@@ -11,7 +11,7 @@ const title= {
   fontSize: '250%',
   fontWeigth: 'bold',
   paddingLeft: '10px',
-  gridColumn: '1 / 5'
+  gridColumn: '1 / 8'
 }
 const navWrapper = {
   display: 'grid',

@@ -1,6 +1,21 @@
 import React from 'react';
+import Donut from './donut.jsx';
 
 // 
-const Donuts = ({donuts}) => donuts.map(donut => <div>{donut.name}</div>)
+// const Donuts = ({donuts}) => donuts.map(donut => <div>{donut.name}</div>)
+
+class Donuts extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+
+  render() {
+    return this.props.donuts.map((donut) => <Donut donut={donut}/>);
+    
+    // this.props.donuts.map((donut, index) => { <Donut name={donut}/>});
+  }
+}
 
 export default Donuts;
