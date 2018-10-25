@@ -42,6 +42,7 @@ class DonutCustomizer extends React.Component {
             </select>
           </div>
           <ToppingSelectForm />
+          <input type='submit' value="Create Donut!"/>
         </div>
       </div>
     )
