@@ -34,7 +34,7 @@ class ToppingSelectForm extends React.Component {
     return (
       <span>
         Topping
-        <select onChange={() => this.setState({selection: event.target.value})}>
+        <select onChange={(event) => this.setState({selection: event.target.value})}>
           <option value="">none</option>
           {this.state.toppings.map(topping => 
             <option value={topping}>{topping}</option>

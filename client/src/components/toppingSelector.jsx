@@ -2,7 +2,7 @@ import React from 'react';
 
 const ToppingSelector = (props) => {
   return (
-    <select onChange={() => (console.log(event.target.value))}>
+    <select onChange={(event) => (console.log(event.target.value))}>
       <option value={props.default}>{props.default}</option>
       {props.toppingOptions.map(toppingOption => 
         <option value={toppingOption}>{toppingOption}</option>

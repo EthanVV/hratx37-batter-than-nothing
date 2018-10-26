@@ -25,7 +25,7 @@ class Donut extends React.Component {
            <option value="6">6</option>
            <option value="12">12</option>
           </select>
-          <input type="submit" value="Order"/>
+          <input type="submit" value="Order" onClick={() => this.props.addToCart(this.props.donut)}/>
         </span>
       </div>
     );

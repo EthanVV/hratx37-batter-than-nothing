@@ -1,4 +1,4 @@
-const { donutText, art} = require('../donuts') // very important
+//const { donutText, art} = require('../donuts') // very important
 
 const express = require('express');
 const app = express();
@@ -28,7 +28,7 @@ app.use('/api/donuts', donuts)
 
 
 app.listen(PORT, ()=>{
-    console.log('booyah',art, donutText, `\t listening on port ${PORT}`);
+    console.log('booyah','donut art -> ooo', 'dOnUt', `\t listening on port ${PORT}`);
 })
 
 

@@ -4,6 +4,8 @@ import TopBar from './topBar.jsx';
 import Donuts from './donuts.jsx';
 import Home from './home.jsx';
 import Customize from './customize.jsx';
+import Cart from './cart.jsx';
+
 
 class App extends React.Component {
   constructor() {
@@ -11,7 +13,8 @@ class App extends React.Component {
     this.state = { 
         donuts: [],
         page: 'home',
-        items: 0
+        items: 0,
+        cartItems: ['test']
     };
     // routes: {
     //     home: true,
@@ -34,6 +37,21 @@ class App extends React.Component {
     el.click();
   }
 
+  addToCart(item) {
+    let updatedCart = null;
+    if (this.state.cartItems.length > 0) {
+      updatedCart = this.state.cartItems.slice().push(item);
+    } else {
+      updatedCart = [item];
+    }
+
+    console.log(updatedCart);
+
+    this.setState({
+      cartItems: updatedCart
+    }, () => console.log(this.cartItems));
+  }
+
   handleRoute(clickedRoute = 'home'){
     // Sets boolean value to help determine what component should show
     // for (const route in this.state.routes) {
@@ -43,13 +61,14 @@ class App extends React.Component {
     switch (clickedRoute) {
       case 'donuts':
         console.log('donutsRoute reached');
-        this.setState({ page: <Donuts donuts={this.state.donuts} /> })
+        this.setState({ page: <Donuts donuts={this.state.donuts} addToCart={this.addToCart.bind(this)} /> })
         break;
       case 'customize':
         this.setState({ page: <Customize /> })
         break;
       case 'cart':
-        this.setState({ page: 'cart component goes here' })
+        console.log('cartRoute reached');
+        this.setState({ page: <Cart cartItems={this.state.donuts}/> }) //using donuts as makeshift cart for testing
         break;
       default:
         this.setState({ page: <Home handleRoute={this.handleRoute.bind(this)}/>})
@@ -58,6 +77,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.donuts);
     return (
       <div>
         <TopBar handleRoute={this.handleRoute.bind(this)}/>

@@ -47,12 +47,14 @@ const Home = (props) => {
       <div style={leftItem}>
         <a href="https://via.placeholder.com/350x150?text=Customize+Image"><img src="https://via.placeholder.com/350x150?text=Customize+Image"/></a>
         <p>Customize</p>
-        <button style={getStarted} type="button">Get Started</button>
+        <button style={getStarted} type="button" onClick={() => props.handleRoute('customize')}>
+          Get Started
+        </button>
       </div>
       <div style={rightItem}>
         <a href="https://via.placeholder.com/350x150?text=Customize+Image"><img src="https://via.placeholder.com/350x150?text=Order+Image"/></a>
         <p>Order</p>
-        <button style={getStarted} type="button">Get Started</button>
+        <button style={getStarted} type="button" onClick={() => props.handleRoute('donuts')}>Get Started</button>
       </div>
     </div>
   )

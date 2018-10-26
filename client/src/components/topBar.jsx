@@ -2,7 +2,7 @@ import React from 'react';
 
 const wrapper = {
   display: 'grid',
-  gridTemplateColumns: 'repeat(10, 1fr)',
+  gridTemplateColumns: '1fr 1fr',
   gridAutoRows: '50px',
   gridGap: '10px',
   backgroundColor: 'lightgrey'
