@@ -6,6 +6,7 @@ import Home from './home.jsx';
 import Customize from './customize.jsx';
 import Cart from './cart.jsx';
 
+const url = 'http://localhost:3001';
 
 class App extends React.Component {
   constructor() {
@@ -25,10 +26,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/donuts')
+    fetch(`${url}/api/donuts`)
       .then(res => res.json())
-      .then(results => {
-          this.setState({ donuts: results })
+      .then(res => {
+          this.setState({donuts: res})
       })
   }
 
@@ -52,6 +53,18 @@ class App extends React.Component {
     }, () => console.log(this.cartItems));
   }
 
+  addCustomDonut(item) {
+    console.log('addDonut invoked w/', item);
+    fetch(`${url}/api/donuts`, {
+      method: 'post',
+      // mode: 'no-cors',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(item)
+    });
+  }
+
   handleRoute(clickedRoute = 'home'){
     // Sets boolean value to help determine what component should show
     // for (const route in this.state.routes) {
@@ -64,7 +77,7 @@ class App extends React.Component {
         this.setState({ page: <Donuts donuts={this.state.donuts} addToCart={this.addToCart.bind(this)} /> })
         break;
       case 'customize':
-        this.setState({ page: <Customize /> })
+        this.setState({ page: <Customize addCustomDonut={this.addCustomDonut.bind(this)} url={url}/> })
         break;
       case 'cart':
         console.log('cartRoute reached');
@@ -80,7 +93,7 @@ class App extends React.Component {
     console.log(this.state.donuts);
     return (
       <div>
-        <TopBar handleRoute={this.handleRoute.bind(this)}/>
+        <TopBar handleRoute={this.handleRoute.bind(this)} homeClick={this.homeClick}/>
         <div>
           {this.state.page}
         </div>

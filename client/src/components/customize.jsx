@@ -12,7 +12,7 @@ class Customize extends React.Component {
     return (
       <div>
         <p>On Customize Page</p>
-        <DonutCustomizer />
+        <DonutCustomizer addCustomDonut={this.props.addCustomDonut} url={this.props.url}/>
       </div>
     )
   }

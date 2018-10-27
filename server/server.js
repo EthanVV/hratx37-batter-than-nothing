@@ -2,9 +2,13 @@
 
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3001;
 
 const morgan = require('morgan');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.use((req,res,next)=>{
     const messages = [
