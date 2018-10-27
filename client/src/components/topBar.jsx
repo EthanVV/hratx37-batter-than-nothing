@@ -41,7 +41,7 @@ class TopBar extends React.Component {
         <div style={nav} onClick={()=>this.props.handleRoute('home')}><p>Home</p></div>
         <div style={nav} onClick={()=>this.props.handleRoute('donuts')}><p>Donuts</p></div>
         <div style={nav} onClick={()=>this.props.handleRoute('customize')}><p>Customize</p></div>
-        <div style={nav} onClick={()=>this.props.handleRoute('cart')}><p>Cart</p></div>
+        <div style={nav} onClick={()=>this.props.handleRoute('cart')}><p>Cart - {this.props.cartList.length}</p></div>
       </div>
     </div>
     );

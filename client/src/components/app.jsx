@@ -17,7 +17,7 @@ class App extends React.Component {
         donutTypes: [],
         page: 'home',
         items: 0,
-        cartItems: ['test']
+        cartList: []
     };
     // routes: {
     //     home: true,
@@ -55,22 +55,30 @@ class App extends React.Component {
     el.click();
   }
 
-  addToCart(item) {
-    let updatedCart = null;
-    if (this.state.cartItems.length > 0) {
-      updatedCart = this.state.cartItems.slice().push(item);
-    } else {
-      updatedCart = [item];
+  updateCart(action, cartEntry) {
+    //refactor to take object
+    console.log('updateCart invoked');
+    switch(action) {
+      case 'rem':
+        
+        break;
+      case 'add':
+        let updatedCart = this.state.cartList.slice();
+        updatedCart.push(cartEntry);
+        this.setState({cartList: updatedCart});
+        console.log('add:', cartEntry);
+        console.log('cartList(async problems)',this.state.cartList)
+        break;
+      case 'set':
+        
+        break;
+      default:
+        break;
     }
-
-    console.log(updatedCart);
-
-    this.setState({
-      cartItems: updatedCart
-    }, () => console.log(this.cartItems));
   }
 
   addCustomDonut(item) {
+    
     console.log('addDonut invoked w/', item);
     fetch(`${url}/api/donuts`, {
       method: 'post',
@@ -82,6 +90,7 @@ class App extends React.Component {
     });
   }
 
+
   handleRoute(clickedRoute = 'home'){
     // Sets boolean value to help determine what component should show
     // for (const route in this.state.routes) {
@@ -91,7 +100,12 @@ class App extends React.Component {
     switch (clickedRoute) {
       case 'donuts':
         console.log('donutsRoute reached');
-        this.setState({ page: <Donuts donuts={this.state.donuts} addToCart={this.addToCart.bind(this)} /> })
+        this.setState({ page:
+          <Donuts 
+            donuts={this.state.donuts}
+            updateCart={this.updateCart.bind(this)}
+          />
+        })
         break;
       case 'customize':
         this.setState({ page: 
@@ -105,7 +119,12 @@ class App extends React.Component {
         break;
       case 'cart':
         console.log('cartRoute reached');
-        this.setState({ page: <Cart cartItems={this.state.donuts}/> }) //using donuts as makeshift cart for testing
+        this.setState({ page:
+          <Cart
+            donuts={this.state.donuts}
+            cartList={this.state.cartList}
+            updateCart={this.updateCart.bind(this)}
+          /> }) //using donuts as makeshift cart for testing
         break;
       default:
         this.setState({ page: <Home handleRoute={this.handleRoute.bind(this)}/>})
@@ -117,7 +136,11 @@ class App extends React.Component {
     console.log(this.state.donuts);
     return (
       <div>
-        <TopBar handleRoute={this.handleRoute.bind(this)} homeClick={this.homeClick}/>
+        <TopBar
+          handleRoute={this.handleRoute.bind(this)}
+          homeClick={this.homeClick}
+          cartList={this.state.cartList}
+        />
         <div>
           {this.state.page}
         </div>

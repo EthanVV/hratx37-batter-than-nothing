@@ -7,6 +7,9 @@ const donutDiv = {
 class Donut extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selection: 1
+    }
   }
 
   render() {
@@ -15,9 +18,9 @@ class Donut extends React.Component {
       <div style={donutDiv}>
         <a href="https://via.placeholder.com/350x200?text=Donut+Image"><img src="https://via.placeholder.com/350x200?text=Donut+Image"></img></a>
         <p>{this.props.donut.name}</p>
+        <p>{this.props.donut.description}</p>
         <span>
-          <select>
-           <option value="0">0</option>
+          <select onChange={(e) => this.setState({selection: e.target.value})}>
            <option value="1">1</option>
            <option value="2">2</option>
            <option value="3">3</option>
@@ -25,7 +28,13 @@ class Donut extends React.Component {
            <option value="6">6</option>
            <option value="12">12</option>
           </select>
-          <input type="submit" value="Order" onClick={() => this.props.addToCart(this.props.donut)}/>
+          <input type="submit" value="Order" onClick={() =>
+             this.props.updateCart('add', {
+               name: this.props.donut.name,
+               id: parseInt(this.props.donut.id, 10),
+               quantity: parseInt(this.state.selection, 10)
+             })}
+            />
         </span>
       </div>
     );

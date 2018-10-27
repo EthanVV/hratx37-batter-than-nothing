@@ -14,7 +14,7 @@ class Cart extends React.Component {
         <p>Customer Name<input type="text"/></p>
         <p>Cart List Below</p>
         <ul>
-          {this.props.cartItems.map(item => <li>{item.name}</li>)}
+          {this.props.cartList.map(item => <CartItem item={item}/>)}
         </ul>
         <input type="Submit" value="Place Order"/>
       </div>

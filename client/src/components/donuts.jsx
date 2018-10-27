@@ -12,7 +12,7 @@ class Donuts extends React.Component {
 
 
   render() {
-    return this.props.donuts.map((donut) => <Donut donut={donut} addToCart={this.props.addToCart.bind(this)}/>);
+    return this.props.donuts.map((donut) => <Donut donut={donut} updateCart={this.props.updateCart.bind(this)}/>);
     
     // this.props.donuts.map((donut, index) => { <Donut name={donut}/>});
   }

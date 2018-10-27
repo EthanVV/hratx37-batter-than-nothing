@@ -23,7 +23,7 @@ router.get('/bases',(req,res)=>{
 })
 
 router.get('/types',(req,res)=>{
-  console.log('bases server route hit');
+  console.log('types server route hit');
   knex('donut_types')
   .then( bases => {
     res.send(bases);
