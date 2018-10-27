@@ -9,22 +9,22 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',(req,res)=>{
-  console.log('UNICORN --------------',req);
-
-  console.log('KEYS', Object.keys(req));
-  console.log('PARAMS', req.params)
-  console.log('BODY', req.body);
-  console.log('QUERY', req.query);
-  console.log('DUMPED', req.dumped);
-
+  console.log('POST BODY', req.body);
   knex('donuts').insert([req.body])
   .then(res.send('donutPost response!!!'))
-
 })
 
 router.get('/bases',(req,res)=>{
   console.log('bases server route hit');
   knex('donut_bases')
+  .then( bases => {
+    res.send(bases);
+  })
+})
+
+router.get('/types',(req,res)=>{
+  console.log('bases server route hit');
+  knex('donut_types')
   .then( bases => {
     res.send(bases);
   })

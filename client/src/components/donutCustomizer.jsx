@@ -13,26 +13,16 @@ class DonutCustomizer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      donutBases: ['base1', 'base2', 'base3'],
-      donutTypes: ['type1', 'type2', 'type3'],
+      donutBases: this.props.donutBases,
+      donutTypes: this.props.donutTypes,
       customDonut: {
-        name: 'no entry',
-        description: 'no entry',
-        base: 'no entry',
-        type: 'no entry',
+        name: '',
+        description: '',
+        base_id: '',
+        type_id: '',
         toppings: []
       }
     };
-  }
-
-  componentDidMount() {
-    console.log('DONUT CUSTOMIZER MOUNTED');
-    console.log(this.props.url);
-    fetch(`${this.props.url}/api/donuts/bases`)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({donutsBases: res})
-      });
   }
 
   updateDonut(e) {
@@ -44,6 +34,8 @@ class DonutCustomizer extends React.Component {
   }
 
   render() {
+    console.log('from donutCustomizer:', this.props.donutBases);
+    console.log('donutCusomizer State: ', this.state);
     return (
       <div>
         <p style={title}>Create a custom donut</p>
@@ -56,14 +48,14 @@ class DonutCustomizer extends React.Component {
           </div>
           <div>
             Donut Base
-            <select name="base" onChange={(e) => this.updateDonut(e)}>
-              {this.state.donutBases.map(base => <option value={base}>{base}</option>)}
+            <select name="base_id" onChange={(e) => this.updateDonut(e)}>
+              {this.state.donutBases.map(base => <option value={base.id}>{base.base}</option>)}
             </select>
           </div>
           <div>
             Donut Type
-            <select name="type" onChange={(e) => this.updateDonut(e)}>
-              {this.state.donutTypes.map(type => <option value={type}>{type}</option>)}
+            <select name="type_id" onChange={(e) => this.updateDonut(e)}>
+              {this.state.donutTypes.map(type => <option value={type.id}>{type.type}</option>)}
             </select>
           </div>
           <ToppingSelectForm updateDonut={this.updateDonut.bind(this)}/>

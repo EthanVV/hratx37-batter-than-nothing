@@ -13,6 +13,8 @@ class App extends React.Component {
     super()
     this.state = { 
         donuts: [],
+        donutBases: [],
+        donutTypes: [],
         page: 'home',
         items: 0,
         cartItems: ['test']
@@ -21,7 +23,7 @@ class App extends React.Component {
     //     home: true,
     //     donuts: false,
     //     customize: false,
-    //     order: false,
+    //     order: false,=
     // }
   }
 
@@ -29,11 +31,26 @@ class App extends React.Component {
     fetch(`${url}/api/donuts`)
       .then(res => res.json())
       .then(res => {
+          console.log('dunuts retrieved:',res);
           this.setState({donuts: res})
-      })
+      });
+    
+    fetch(`${url}/api/donuts/bases`)
+      .then(res => res.json())
+      .then(res => {
+        console.log('donutBases retrieved:', res);
+        this.setState({donutBases: res})
+      });
+
+    fetch(`${url}/api/donuts/types`)
+      .then(res => res.json())
+      .then(res => {
+        console.log('donutTypes retrieved:', res);
+        this.setState({donutTypes: res})
+      });
   }
 
-  homeClick(el){
+  homeClick(el) {
     // have the home page clicked by default
     el.click();
   }
@@ -77,7 +94,14 @@ class App extends React.Component {
         this.setState({ page: <Donuts donuts={this.state.donuts} addToCart={this.addToCart.bind(this)} /> })
         break;
       case 'customize':
-        this.setState({ page: <Customize addCustomDonut={this.addCustomDonut.bind(this)} url={url}/> })
+        this.setState({ page: 
+          <Customize 
+            addCustomDonut={this.addCustomDonut.bind(this)} 
+            donutBases={this.state.donutBases}
+            donutTypes={this.state.donutTypes}
+            url={url}
+          /> 
+        })
         break;
       case 'cart':
         console.log('cartRoute reached');
