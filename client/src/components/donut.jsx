@@ -1,7 +1,7 @@
 import React from 'react';
 
 const donutDiv = {
-  textAlign: 'center'
+  textAlign: 'center',
 }
 
 class Donut extends React.Component {
@@ -15,7 +15,7 @@ class Donut extends React.Component {
   render() {
     console.log('donut render reached');
     return (
-      <div style={donutDiv}>
+      <div >
         <a href="https://via.placeholder.com/350x200?text=Donut+Image"><img src="https://via.placeholder.com/350x200?text=Donut+Image"></img></a>
         <p>{this.props.donut.name}</p>
         <p>{this.props.donut.description}</p>

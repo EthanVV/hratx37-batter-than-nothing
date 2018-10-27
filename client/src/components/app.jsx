@@ -8,6 +8,7 @@ import Cart from './cart.jsx';
 
 const url = 'http://localhost:3001';
 
+
 class App extends React.Component {
   constructor() {
     super()
@@ -101,7 +102,7 @@ class App extends React.Component {
       case 'donuts':
         console.log('donutsRoute reached');
         this.setState({ page:
-          <Donuts 
+          <Donuts
             donuts={this.state.donuts}
             updateCart={this.updateCart.bind(this)}
           />
