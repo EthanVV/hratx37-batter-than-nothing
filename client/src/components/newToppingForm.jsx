@@ -7,9 +7,13 @@ class NewToppingForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      customTopping: {
+        name: null,
+        price: null
+      }
     }
   }
+
   render() {
     return (
       <div>
@@ -17,7 +21,7 @@ class NewToppingForm extends React.Component {
         <div style={title}>New Topping Form</div>
         <br/>
         <div>
-          Topping Name<input type="text" />
+          Topping Name<input type="text" onChange={(e) => this.setState({name: e.target.value})}/>
         </div>
         <div>
           Price<input type="text" />

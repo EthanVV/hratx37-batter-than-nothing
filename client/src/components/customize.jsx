@@ -17,6 +17,7 @@ class Customize extends React.Component {
           addCustomDonut={this.props.addCustomDonut}
           donutBases={this.props.donutBases}
           donutTypes={this.props.donutTypes}
+          toppings={this.props.toppings}
           url={this.props.url}
         />
       </div>

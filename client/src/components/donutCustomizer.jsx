@@ -13,14 +13,12 @@ class DonutCustomizer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      donutBases: this.props.donutBases,
-      donutTypes: this.props.donutTypes,
       customDonut: {
         name: '',
         description: '',
         donut_base_id: '',
-        donut_type_id: ''
-        //toppings: []
+        donut_type_id: '',
+        toppings: []
       }
     };
   }
@@ -59,8 +57,13 @@ class DonutCustomizer extends React.Component {
     // console.log(e.target.name);
   }
 
+  updateToppings(index, topping) {
+
+  }
+
   render() {
     console.log('from donutCustomizer:', this.props.donutBases);
+    console.log('from donutCustomizer toppings:', this.props.toppings);
     console.log('donutCusomizer State: ', this.state);
     return (
       <div>
@@ -76,20 +79,20 @@ class DonutCustomizer extends React.Component {
             Donut Base
             <select name="donut_base_id" onChange={(e) => this.updateDonut(e)}>
               <option value=''></option>
-              {this.state.donutBases.map(base => <option value={parseInt(base.id, 10)}>{base.base}</option>)}
+              {this.props.donutBases.map(base => <option value={parseInt(base.id, 10)}>{base.base}</option>)}
             </select>
           </div>
           <div>
             Donut Type
             <select name="donut_type_id" onChange={(e) => this.updateDonut(e)}>
               <option value=''></option>
-              {this.state.donutTypes.map(type => <option value={parseInt(type.id, 10)}>{type.type}</option>)}
+              {this.props.donutTypes.map(type => <option value={parseInt(type.id, 10)}>{type.type}</option>)}
             </select>
           </div>
-          <ToppingSelectForm updateDonut={this.updateDonut.bind(this)}/>
+          <ToppingSelectForm updateToppings={this.updateToppings.bind(this)} toppings={this.props.toppings}/>
           <input type='submit' value="Create Donut!" onClick={() => this.submit(this.state.customDonut)}/>
         </div>
-        <NewToppingForm />
+        {/* <NewToppingForm /> */}
       </div>
     )
   }

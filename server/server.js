@@ -26,9 +26,19 @@ app.use( (_, res, next) => {
   next();
 });
 
-// set api routes
-const { donuts } = require('./routes');
+const {
+  donuts,
+  donut_bases,
+  donut_types,
+  toppings,
+  orders
+} = require('./routes');
+
 app.use('/api/donuts', donuts)
+app.use('/api/donut_bases', donut_bases);
+app.use('/api/donut_types', donut_types);
+app.use('/api/toppings', toppings);
+app.use('/api/order', orders);
 
 
 app.listen(PORT, ()=>{

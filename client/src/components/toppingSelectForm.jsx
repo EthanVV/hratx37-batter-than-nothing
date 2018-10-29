@@ -5,7 +5,6 @@ class ToppingSelectForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      toppings: ['topping1', 'topping2', 'topping3'],
       selection: '',
       selectedToppings: []
     }
@@ -31,13 +30,14 @@ class ToppingSelectForm extends React.Component {
   }
 
   toppingMaster() {
+    console.log('toppingsMaster:', this.props.toppings);
     return (
       <span>
         Topping
-        <select onChange={(event) => this.setState({selection: event.target.value})}>
+        <select onChange={(e) => this.setState({selection: e.target.value})}>
           <option value="">none</option>
-          {this.state.toppings.map(topping => 
-            <option value={topping}>{topping}</option>
+          {this.props.toppings.map(topping => 
+            <option value={topping.id}>{topping.name} - ${topping.price}</option>
           )}
         </select>
         <input type="submit" value="add+" onClick={() => this.addTopping()}/>
@@ -47,12 +47,13 @@ class ToppingSelectForm extends React.Component {
 
 
   render() {
+    console.log('@toppingSelectForm:', this.props.toppings)
     return (
       <div>
         {this.toppingMaster()}
         {this.state.selectedToppings.map((topping, index) => (
           <div>
-            <ToppingSelector toppingOptions={this.state.toppings} default={topping} index={index} updateDonut={this.props.updateDonut}/>
+            <ToppingSelector toppingOptions={this.props.toppings} default={this.props.toppings[topping]} index={index} updateDonut={this.props.updateDonut}/>
           </div>
         ))}
       </div>

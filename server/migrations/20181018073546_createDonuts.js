@@ -1,6 +1,6 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('donuts', function (table) {
-    table.increments('id').primary().unsinged();
+    table.increments();
     table.string('name');
     table.string('description');
     table.integer('donut_type_id').references('id').inTable('donut_types');

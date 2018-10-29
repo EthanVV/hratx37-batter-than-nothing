@@ -1,6 +1,6 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('donut_bases', function (table) {
-    table.increments('id').primary().unsinged();
+    table.increments();
     table.string('base');
     table.timestamps(true, true);
   });

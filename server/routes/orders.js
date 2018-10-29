@@ -2,13 +2,10 @@ const router = require('express').Router();
 const knex = require('../db/knex');
 
 router.get('/',(req,res)=>{
-  knex('toppings')
-  .then( toppings => {
-    res.send(toppings);
+  knex('orders')
+  .then( orders => {
+    res.send(orders);
   })
-})
-
-router.post('/',(req,res)=>{
 })
 
 module.exports = router;

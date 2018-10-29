@@ -2,8 +2,8 @@ import React from 'react';
 
 const wrapper = {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  gridAutoRows: '50px',
+  gridTemplateColumns: '300px 1fr 400px',
+  gridAutoRows: 'minmax(50, auto)',
   gridGap: '10px',
   backgroundColor: 'lightgrey'
 }
@@ -11,13 +11,13 @@ const title= {
   fontSize: '250%',
   fontWeigth: 'bold',
   paddingLeft: '10px',
-  gridColumn: '1 / 8'
+  gridColumn: '1'
 }
 const navWrapper = {
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
   gridGap: '5px',
-  gridColumn: '8/11'
+  gridColumn: '3',
 }
 const nav = {
   backgroundColor: 'grey',

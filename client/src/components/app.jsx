@@ -13,12 +13,13 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = { 
-        donuts: [],
-        donutBases: [],
-        donutTypes: [],
-        page: 'home',
-        items: 0,
-        cartList: []
+      donuts: [],
+      donutBases: [],
+      donutTypes: [],
+      toppings: [],
+      page: 'home',
+      items: 0,
+      cartList: []
     };
     // routes: {
     //     home: true,
@@ -36,18 +37,25 @@ class App extends React.Component {
           this.setState({donuts: res})
       });
     
-    fetch(`${url}/api/donuts/bases`)
+    fetch(`${url}/api/donut_bases`)
       .then(res => res.json())
       .then(res => {
         console.log('donutBases retrieved:', res);
         this.setState({donutBases: res})
       });
 
-    fetch(`${url}/api/donuts/types`)
+    fetch(`${url}/api/donut_types`)
       .then(res => res.json())
       .then(res => {
         console.log('donutTypes retrieved:', res);
         this.setState({donutTypes: res})
+      });
+
+    fetch(`${url}/api/toppings`)
+    .then(res => res.json())
+      .then(res => {
+        console.log('toppings retrieved:', res);
+        this.setState({toppings: res})
       });
   }
 
@@ -114,6 +122,7 @@ class App extends React.Component {
             addCustomDonut={this.addCustomDonut.bind(this)} 
             donutBases={this.state.donutBases}
             donutTypes={this.state.donutTypes}
+            toppings={this.state.toppings}
             url={url}
           /> 
         })
