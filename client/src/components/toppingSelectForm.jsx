@@ -53,7 +53,9 @@ class ToppingSelectForm extends React.Component {
         {this.toppingMaster()}
         {this.state.selectedToppings.map((topping, index) => (
           <div>
-            <ToppingSelector toppingOptions={this.props.toppings} default={this.props.toppings[topping]} index={index} updateDonut={this.props.updateDonut}/>
+             {/* hacky index fix*/}
+            <ToppingSelector toppingOptions={this.props.toppings} default={this.props.toppings[topping - 1]} index={index} updateDonut={this.props.updateDonut}/>
+
           </div>
         ))}
       </div>

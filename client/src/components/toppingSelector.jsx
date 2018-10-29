@@ -10,7 +10,7 @@ const ToppingSelector = (props) => {
     // <select onChange={(e) => props.updateDonut}>
     <div style={wrapper}>
       <select>
-        <option value={props.toppingOptions[props.index].id}>{props.toppingOptions[props.index].name} - ${props.toppingOptions[props.index].price}</option>
+        <option value={props.default.id}>{props.default.name} - ${props.default.price}</option>
         {props.toppingOptions.map(toppingOption => 
           <option value={toppingOption.id}>{toppingOption.name} - ${toppingOption.price}</option>
         )}
